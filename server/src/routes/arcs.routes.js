@@ -19,14 +19,10 @@ router.post("/", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-  console.log("hey", req);
   arcs
     .find()
     .then((arcs) => res.json(arcs))
     .catch((err) => res.status(400).json("Error: " + err));
-});
-router.get("/test", (req, res) => {
-  res.send("Test route is working");
 });
 
 export default router;
