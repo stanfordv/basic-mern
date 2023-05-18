@@ -8,7 +8,7 @@ import Home from "./Home";
 const CustomRoutes = () => {
   return (
     <Routes>
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/arcs-data" element={<ArcsData />} />
       {/* <Route path="*" element={<NoMatch />} />  */}

@@ -25,4 +25,12 @@ router.get("/", (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.delete("/:id", (req, res) => {
+  const arcId = req.params.id;
+  arcs
+    .findByIdAndDelete(arcId)
+    .then(() => res.status(200).json("Arc deleted!"))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 export default router;

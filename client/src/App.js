@@ -1,4 +1,5 @@
 // App.js
+import axios from "axios";
 import React, { useState } from "react";
 
 import ArcsData from "./components/ArcsData";
@@ -12,11 +13,23 @@ function App() {
   const onArcsFetched = (arcsData) => {
     setArcs(arcsData);
   };
+  const deleteArc = async (arcId) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:5000/arcs/${arcId}`
+      );
+      if (response.status === 200) {
+        setArcs((prevArcs) => prevArcs.filter((arc) => arc._id !== arcId));
+      }
+    } catch (error) {
+      console.error("Error deleting arc:", error);
+    }
+  };
 
   return (
     <div>
       <GetArcsButton onArcsFetched={onArcsFetched} />
-      <ArcsData arcs={arcs} />
+      <ArcsData arcs={arcs} onDeleteArc={deleteArc} />
       <CustomRoutes />
       <MyTestForm />
     </div>
