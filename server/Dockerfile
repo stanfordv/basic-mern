@@ -1,23 +1,20 @@
-# server/Dockerfile
-
-# Use the official lightweight Node.js 16 image.
-# https://hub.docker.com/_/node
+# Use official node image as the base
 FROM node:16-slim
 
-# Create and change to the app directory.
+# Set working directory in Docker container
 WORKDIR /usr/src/app
 
-# Copy application dependency manifests to the container image.
+# Copy package.json and package-lock.json to Docker container
 COPY package*.json ./
 
-# Install production dependencies.
-RUN yarn install
+# Install dependencies in Docker container
+RUN npm install
 
-# Copy local code to the container image.
-COPY . ./
+# Copy rest of the server code to Docker container
+COPY . .
 
-# Expose the port the app runs in
+# Expose port 5000
 EXPOSE 5000
 
-# Run the web service on container startup.
-CMD [ "npm", "start" ]
+# Start the server
+CMD [ "node", "src/index.js" ]
