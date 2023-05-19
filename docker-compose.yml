@@ -25,7 +25,7 @@ services:
     image: basic-mern-server
     volumes:
       - ./server:/usr/src/app
-      - /usr/src/app/node_modules
+      - server_node_modules:/usr/src/app/node_modules
     ports:
       - "5000:5000"
     environment:
@@ -46,10 +46,11 @@ services:
       - app-network
 
 networks:
-    app-network:
-        driver: bridge
+  app-network:
+    driver: bridge
 
 volumes:
-    dbdata:
-    web-root:
-      driver: local
+  dbdata:
+  server_node_modules:
+  web-root:
+    driver: local

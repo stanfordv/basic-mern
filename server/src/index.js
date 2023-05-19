@@ -8,7 +8,9 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+app.get("/tester", (req, res) => {
+  res.send("Hello, this is a test endpoint");
+});
 mongoose
   .connect("mongodb://db:27017/mydatabase", {
     useNewUrlParser: true,

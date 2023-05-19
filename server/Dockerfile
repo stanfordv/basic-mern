@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 5000
 
 # Start the server
-CMD [ "node", "src/index.js" ]
+CMD ["npx", "nodemon", "src/index.js"]
