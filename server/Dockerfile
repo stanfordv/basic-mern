@@ -1,5 +1,5 @@
 # Use official node image as the base
-FROM node:16-slim
+FROM node:16-alpine
 
 # Set working directory in Docker container
 WORKDIR /usr/src/app
